@@ -3,7 +3,7 @@
 #####################################
 # File name : main.py
 # Create date : 2019-08-08 14:26
-# Modified date : 2019-08-22 11:53
+# Modified date : 2020-05-20 22:19
 # Author : DARREN
 # Describe : not set
 # Email : lzygzh@126.com
@@ -13,11 +13,12 @@ from __future__ import print_function
 
 from word_form import WordForm
 from build_radical import create_radicals
+import etc
 
 def query_text(word):
 
     print("句子：%s" % word)
-    handler = WordForm()
+    handler = WordForm(etc.STROKE_FILE_PATH, etc.RADICAL_FILE_PATH, etc.CHAR_DICT)
     strokes = handler.get_strokes(word)
     pinyins = handler.get_pinyin(word)
     radicals = handler.get_radical(word)
@@ -38,7 +39,7 @@ def query():
     query_text(word)
 
 def run():
-    #create_radicals()
+    create_radicals()
     query()
 
 if __name__ == '__main__':
